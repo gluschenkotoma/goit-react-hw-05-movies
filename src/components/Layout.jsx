@@ -26,7 +26,7 @@ export const Layout = () => {
       <GlobalStyle />
       <Nav>
         {/* разметка линков */}
-        <Link to="/">HOME</Link>
+        <Link to="/">HOMEPAGE</Link>
         <Link to="/movies">MOVIES</Link>
       </Nav>
       {/* рэндер роутов */}
