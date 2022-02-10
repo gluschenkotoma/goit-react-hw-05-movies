@@ -11,7 +11,6 @@ export const useFetchItems = () => {
       setLoading(true);
       try {
         const movies = await getMovies();
-
         setMovies(movies);
       } catch (error) {
         setError(error);
