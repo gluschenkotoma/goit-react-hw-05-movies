@@ -53,6 +53,7 @@ export const MovieDetailsPage = () => {
                 )}
               </div>
             </div>
+
             <div>
               <h4>Additional Information</h4>
               <ul>
