@@ -1,4 +1,4 @@
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesByQuery } from 'services/movieApi';
 import toast from 'react-hot-toast';
@@ -8,6 +8,7 @@ export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
 
   // сделать запрос
   const query = searchParams.get('query');
@@ -60,7 +61,9 @@ export const MoviesPage = () => {
           <ul>
             {movies.map(movie => (
               <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                  {movie.title}
+                </Link>
               </li>
             ))}
           </ul>

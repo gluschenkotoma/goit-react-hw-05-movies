@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { getMoviesById } from 'services/movieApi';
 import { Loader } from 'components/Loader';
@@ -9,6 +9,7 @@ export const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState(null);
   const movieId = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchMoviesById() {
@@ -29,7 +30,12 @@ export const MovieDetailsPage = () => {
     <div>
       {loading && <Loader />}
 
-      {movie && <MovieCard movie={movie} />}
+      {movie && (
+        <>
+          <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
+          <MovieCard movie={movie} />
+        </>
+      )}
     </div>
   );
 };
