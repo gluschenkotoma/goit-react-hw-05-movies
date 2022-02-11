@@ -30,9 +30,11 @@ export const Layout = () => {
         <Link to="/movies">MOVIES</Link>
       </Nav>
       {/* рэндер роутов */}
-      <Suspense fallback="">
-        <Outlet />
-      </Suspense>
+      <div>
+        <Suspense fallback="">
+          <Outlet />
+        </Suspense>
+      </div>
 
       <Toaster />
     </Wrapper>

@@ -8,8 +8,8 @@ import { MovieCard } from 'components/MovieCard';
 export const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState(null);
-  const movieId = useParams();
-  console.log(movieId);
+  const { movieId } = useParams();
+
   const location = useLocation();
 
   useEffect(() => {
