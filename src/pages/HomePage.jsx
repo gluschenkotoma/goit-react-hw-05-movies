@@ -22,3 +22,6 @@ export const HomePage = () => {
     </main>
   );
 };
+
+// <Link to={`/movies/${movie.id}`}>{movie.title}</Link> будет вести на ->
+//  <Route path="movies/:movieId" element={<MovieDetailsPage />}>
