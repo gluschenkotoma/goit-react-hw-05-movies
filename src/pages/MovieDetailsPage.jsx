@@ -19,6 +19,8 @@ export const MovieDetailsPage = () => {
         setMovie(movie);
       } catch (error) {
         toast.error('Упс! Что-то пошло не так! Вернитесь на главную страницу');
+      } finally {
+        setLoading(false);
       }
     }
     fetchMoviesById();

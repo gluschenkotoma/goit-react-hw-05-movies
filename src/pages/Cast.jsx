@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 
 export const Cast = () => {
   const { movieId } = useParams();
-  const [loading, setLoading] = useState(false);
+
   const [movieCasts, setMovieCasts] = useState([]);
   useEffect(() => {
     async function fetchCasts() {
@@ -14,8 +14,6 @@ export const Cast = () => {
         setMovieCasts(casts);
       } catch (error) {
         toast.error('Упс! Что-то пошло не так! Вернитесь на главную страницу');
-      } finally {
-        setLoading(false);
       }
     }
     fetchCasts();
