@@ -38,5 +38,6 @@ export const getMovieCast = async id => {
   console.log(data);
   return data;
 };
+
 // запрос обзоров для страницы кинофильма.
 //https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=c3b1e4ac20f5db884f8c75b276d34d38&language=en-US&page=1
