@@ -26,9 +26,7 @@ export const getMoviesByQuery = async query => {
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=c3b1e4ac20f5db884f8c75b276d34d38&language=en-US
 export const getMoviesById = async id => {
   const response = await axios.get(`/3/movie/${id}?api_key=${API_KEY}`);
-  // console.log('response', response);
   const data = await response.data;
-  // console.log('data', data);
   return data;
 };
 
@@ -36,8 +34,8 @@ export const getMoviesById = async id => {
 // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=c3b1e4ac20f5db884f8c75b276d34d38&language=en-US
 export const getMovieCast = async id => {
   const response = await axios.get(`movie/${id}/credits?api_key=${API_KEY}`);
-  console.log('response', response);
-  const data = response.data;
+  const data = await response.data.cast;
+  console.log(data);
   return data;
 };
 // запрос обзоров для страницы кинофильма.

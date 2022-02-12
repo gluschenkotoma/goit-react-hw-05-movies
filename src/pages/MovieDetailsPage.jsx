@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useLocation, Outlet, NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { getMoviesById } from '../services/movieApi';
@@ -16,12 +16,9 @@ export const MovieDetailsPage = () => {
       setLoading(true);
       try {
         const movie = await getMoviesById(movieId);
-
         setMovie(movie);
       } catch (error) {
         toast.error('Упс! Что-то пошло не так! Вернитесь на главную страницу');
-      } finally {
-        setLoading(false);
       }
     }
     fetchMoviesById();
@@ -65,9 +62,8 @@ export const MovieDetailsPage = () => {
                 </li>
               </ul>
             </div>
-            <Suspense fallback="">
-              <Outlet />
-            </Suspense>
+
+            <Outlet />
           </div>
           <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
         </>
