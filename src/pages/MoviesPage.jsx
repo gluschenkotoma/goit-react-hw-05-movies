@@ -19,6 +19,7 @@ export const MoviesPage = () => {
         setLoading(true);
         try {
           const movies = await getMoviesByQuery(query);
+          console.log(movies);
 
           if (movies.length === 0) {
             toast.error(
