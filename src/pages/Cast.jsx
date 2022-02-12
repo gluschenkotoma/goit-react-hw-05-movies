@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/movieApi';
 import { toast } from 'react-hot-toast';
+import { FcBusinessman } from 'react-icons/fc';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -21,15 +22,24 @@ export const Cast = () => {
 
   return (
     <ul>
-      {movieCasts.map(({ id, profile_path, original_name, character }) => (
-        <li key={id}>
-          <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt="" />
-          <div>
-            <p>name: {original_name}</p>
-            <p>character: {character}</p>
-          </div>
-        </li>
-      ))}
+      {movieCasts.map(
+        ({ id, profile_path, original_name, character, name }) => (
+          <li key={id}>
+            {profile_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w154${profile_path}`}
+                alt={name}
+              />
+            ) : (
+              <FcBusinessman />
+            )}
+            <div>
+              <p>name: {original_name}</p>
+              <p>character: {character}</p>
+            </div>
+          </li>
+        )
+      )}
     </ul>
   );
 };
