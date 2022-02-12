@@ -10,6 +10,7 @@ export const Cast = () => {
     async function fetchCasts() {
       try {
         const movieCasts = await getMovieCast(movieId);
+        console.log(movieCasts);
         setMovieCasts(movieCasts);
       } catch (error) {
         toast.error('Упс! Что-то пошло не так! Вернитесь на главную страницу');
