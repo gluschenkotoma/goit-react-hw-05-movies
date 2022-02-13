@@ -33,7 +33,7 @@ export const getMoviesById = async id => {
 // запрос информации о актёрском составе для страницы кинофильма.
 // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=c3b1e4ac20f5db884f8c75b276d34d38&language=en-US
 export const getMovieCast = async id => {
-  const response = await axios.get(`movie/${id}/credits?api_key=${API_KEY}`);
+  const response = await axios.get(`/3/movie/${id}/credits?api_key=${API_KEY}`);
   const data = await response.data.cast;
   console.log(data);
   return data;
