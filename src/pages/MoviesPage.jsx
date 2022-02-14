@@ -1,15 +1,62 @@
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesByQuery } from 'services/movieApi';
 import toast from 'react-hot-toast';
 import { Loader } from 'components/Loader';
 import PropTypes from 'prop-types';
+import { MovieList } from 'components/MovieList';
+import styled from 'styled-components';
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+`;
+
+export const SearchFormButton = styled.button`
+  padding: 6px 22px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.62;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  background: #3f51b5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+      0px 2px 2px rgba(0, 0, 0, 0.12);
+  }
+`;
+
+export const SearchFormInput = styled.input`
+  display: inline-block;
+  width: 300px;
+
+  font: inherit;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+
+  padding: 5px 20px;
+  margin-right: 10px;
+
+  &:focus {
+    box-shadow: 1px 5px 2px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+      0px 2px 2px rgba(0, 0, 0, 0.12);
+  }
+`;
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const location = useLocation();
 
   // сделать запрос
   const query = searchParams.get('query');
@@ -51,26 +98,14 @@ export const MoviesPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <input type="text" name="query" />
-        <button type="submit">Search query</button>
-      </form>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <SearchFormInput type="text" name="query" />
+        <SearchFormButton type="submit">Search query</SearchFormButton>
+      </Form>
 
       {loading && <Loader />}
 
-      {query && !loading && (
-        <div>
-          <ul>
-            {movies.map(movie => (
-              <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                  {movie.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {query && !loading && <MovieList movies={movies} />}
     </div>
   );
 };

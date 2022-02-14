@@ -22,6 +22,7 @@ const Link = styled(NavLink)`
 `;
 
 const Container = styled.div`
+  /* background-color: #f8f2cc; */
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
