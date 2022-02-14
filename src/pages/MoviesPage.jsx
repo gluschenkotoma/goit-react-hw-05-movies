@@ -43,13 +43,14 @@ export const SearchFormInput = styled.input`
   border: none;
   border-radius: 4px;
   outline: none;
-
-  padding: 5px 20px;
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 7px 22px;
   margin-right: 10px;
 
   &:focus {
-    box-shadow: 1px 5px 2px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
       0px 2px 2px rgba(0, 0, 0, 0.12);
+    background-color: white;
   }
 `;
 
