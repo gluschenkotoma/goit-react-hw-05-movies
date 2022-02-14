@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getMoviesByQuery } from 'services/movieApi';
 import toast from 'react-hot-toast';
 import { Loader } from 'components/Loader';
+import PropTypes from 'prop-types';
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -72,4 +73,12 @@ export const MoviesPage = () => {
       )}
     </div>
   );
+};
+MoviesPage.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };

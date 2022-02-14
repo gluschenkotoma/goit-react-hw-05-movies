@@ -3,6 +3,7 @@ import { useParams, useLocation, Outlet, NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { getMoviesById } from '../services/movieApi';
 import { Loader } from 'components/Loader';
+import PropTypes from 'prop-types';
 
 export const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -83,6 +84,18 @@ export const MovieDetailsPage = () => {
       )}
     </div>
   );
+};
+
+MovieDetailsPage.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.array.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+  }),
 };
 
 //

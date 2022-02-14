@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { useFetchItems } from 'hooks';
+import PropTypes from 'prop-types';
 
 export const HomePage = () => {
   const { movies, loading, error } = useFetchItems();
@@ -27,3 +28,11 @@ export const HomePage = () => {
 
 // <Link to={`/movies/${movie.id}`}>{movie.title}</Link> будет вести на ->
 //  <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+HomePage.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
+};
