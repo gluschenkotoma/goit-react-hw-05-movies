@@ -43,6 +43,6 @@ export const getMovieCast = async id => {
 export const getMovieReviews = async id => {
   const response = await axios.get(`/3/movie/${id}/reviews?api_key=${API_KEY}`);
   const data = await response.data.results;
-  console.log(data);
+  // console.log(data);
   return data;
 };

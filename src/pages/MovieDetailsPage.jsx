@@ -52,22 +52,33 @@ export const MovieDetailsPage = () => {
                 )}
               </div>
             </div>
-
+            <hr />
+            <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
+            <hr />
             <div>
               <h4>Additional Information</h4>
               <ul>
                 <li>
-                  <NavLink to={`/movies/${movie.id}/cast`}>CAST</NavLink>
+                  <NavLink
+                    to={`/movies/${movie.id}/cast`}
+                    // state={{ from: location }} при условии рендера на отдельной страницы
+                  >
+                    CAST
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/movies/${movie.id}/reviews`}>REVIEW</NavLink>
+                  <NavLink
+                    to={`/movies/${movie.id}/reviews`}
+                    // state={{ from: location }} при условии рендера на отдельной страницы
+                  >
+                    REVIEW
+                  </NavLink>
                 </li>
               </ul>
             </div>
 
             <Outlet />
           </div>
-          <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
         </>
       )}
     </div>
