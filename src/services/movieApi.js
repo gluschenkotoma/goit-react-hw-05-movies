@@ -1,6 +1,7 @@
 import axios from 'axios';
 const API_KEY = 'c3b1e4ac20f5db884f8c75b276d34d38';
 axios.defaults.baseURL = 'https://api.themoviedb.org';
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 // https://api.themoviedb.org/3/trending/movie/day?api_key=c3b1e4ac20f5db884f8c75b276d34d38
 export const getMovies = async () => {

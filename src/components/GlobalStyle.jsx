@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
+ 
 
   body {
     min-height: 100vh;

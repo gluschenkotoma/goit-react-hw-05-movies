@@ -6,35 +6,45 @@ import { GlobalStyle } from './GlobalStyle';
 
 const Nav = styled.nav`
   display: flex;
-  gap: 20px;
+  margin-top: 20px;
   margin-bottom: 20px;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 18px;
 `;
 
 const Link = styled(NavLink)`
+  text-decoration: none;
+  color: #2a363b;
   &.active {
-    color: tomato;
+    color: #2196f3;
   }
 `;
 
-const Wrapper = styled.div`
-  padding: 12px;
+const Container = styled.div`
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 `;
 
 export const Layout = () => {
   return (
-    <Wrapper>
+    <Container>
       <GlobalStyle />
       <Nav>
         {/* разметка линков */}
         <Link to="/">HOMEPAGE</Link>
         <Link to="/movies">MOVIES</Link>
       </Nav>
+      <hr />
       {/* рэндер роутов */}
       <div>
         <Outlet />
       </div>
 
       <Toaster />
-    </Wrapper>
+    </Container>
   );
 };
