@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink, useLocation } from 'react-router-dom';
 import { getMovieReviews } from 'services/movieApi';
 
 export const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchReviews() {
@@ -35,10 +35,10 @@ export const Reviews = () => {
           <p>We don't have any reviews yet</p>
         )}
       </div>
-      {/* при условии рендера на отдельной страницы */}
-      {/* <hr />
+
+      <hr />
       <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
-      <hr /> */}{' '}
+      <hr />
     </>
   );
 };

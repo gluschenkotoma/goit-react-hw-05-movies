@@ -62,7 +62,7 @@ export const MovieDetailsPage = () => {
                 <li>
                   <NavLink
                     to={`/movies/${movie.id}/cast`}
-                    // state={{ from: location }} при условии рендера на отдельной страницы
+                    state={{ from: location }}
                   >
                     CAST
                   </NavLink>
@@ -70,7 +70,7 @@ export const MovieDetailsPage = () => {
                 <li>
                   <NavLink
                     to={`/movies/${movie.id}/reviews`}
-                    // state={{ from: location }} при условии рендера на отдельной страницы
+                    state={{ from: location }}
                   >
                     REVIEW
                   </NavLink>

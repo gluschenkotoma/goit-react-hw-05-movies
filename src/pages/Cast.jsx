@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink, useLocation } from 'react-router-dom';
 import { getMovieCast } from 'services/movieApi';
 import { toast } from 'react-hot-toast';
 import { FcBusinessman } from 'react-icons/fc';
@@ -7,7 +7,7 @@ import { FcBusinessman } from 'react-icons/fc';
 export const Cast = () => {
   const { movieId } = useParams();
   const [movieCasts, setMovieCasts] = useState([]);
-  // const location = useLocation();
+  const location = useLocation();
   useEffect(() => {
     async function fetchCasts() {
       try {
@@ -45,10 +45,10 @@ export const Cast = () => {
           )}
         </ul>
       </div>
-      {/* при условии рендера на отдельной страницы */}
-      {/* <hr />
+
+      <hr />
       <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
-      <hr /> */}
+      <hr />
     </>
   );
 };
