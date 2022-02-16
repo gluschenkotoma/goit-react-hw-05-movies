@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader';
 import PropTypes from 'prop-types';
 import { MovieList } from 'components/MovieList';
 import styled from 'styled-components';
-import { useFetchByQuery } from 'hooks/useFetchByQuery';
+import { useFetchByQuery } from 'hooks';
 
 export const Form = styled.form`
   display: flex;
