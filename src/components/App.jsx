@@ -14,10 +14,16 @@ const createChunk = componentName => {
     }))
   );
 };
-const MoviesPage = createChunk('MoviesPage');
+// const MoviesPage = createChunk('MoviesPage');
 const MovieDetailsPage = createChunk('MovieDetailsPage');
 const Cast = createChunk('Cast');
 const Reviews = createChunk('Reviews');
+
+const MoviesPage = lazy(() =>
+  import('../pages/MoviesPage/MoviesPage').then(module => ({
+    default: module.MoviesPage,
+  }))
+);
 
 export const App = () => {
   return (
