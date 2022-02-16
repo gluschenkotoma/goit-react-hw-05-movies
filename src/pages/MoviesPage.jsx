@@ -1,11 +1,12 @@
-import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getMoviesByQuery } from 'services/movieApi';
+// import { useSearchParams } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import { getMoviesByQuery } from 'services/movieApi';
 import toast from 'react-hot-toast';
 import { Loader } from 'components/Loader';
 import PropTypes from 'prop-types';
 import { MovieList } from 'components/MovieList';
 import styled from 'styled-components';
+import { useFetchByQuery } from 'hooks/useFetchByQuery';
 
 export const Form = styled.form`
   display: flex;
@@ -55,37 +56,7 @@ export const SearchFormInput = styled.input`
 `;
 
 export const MoviesPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  // сделать запрос
-  const query = searchParams.get('query');
-
-  useEffect(() => {
-    if (query) {
-      async function fetchMoviesByQuery() {
-        setLoading(true);
-        try {
-          const movies = await getMoviesByQuery(query);
-          console.log(movies);
-
-          if (movies.length === 0) {
-            toast.error(
-              'Нет фильма по такому запросу! Введите название фильма.'
-            );
-            return;
-          }
-          setMovies(movies);
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setLoading(false);
-        }
-      }
-      fetchMoviesByQuery();
-    }
-  }, [query]);
+  const { movies, loading, query, setSearchParams } = useFetchByQuery();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -118,3 +89,35 @@ MoviesPage.propTypes = {
     })
   ),
 };
+
+// const [searchParams, setSearchParams] = useSearchParams();
+// const [movies, setMovies] = useState([]);
+// const [loading, setLoading] = useState(false);
+
+// // сделать запрос
+// const query = searchParams.get('query');
+
+// useEffect(() => {
+//   if (query) {
+//     async function fetchMoviesByQuery() {
+//       setLoading(true);
+//       try {
+//         const movies = await getMoviesByQuery(query);
+//         console.log(movies);
+
+//         if (movies.length === 0) {
+//           toast.error(
+//             'Нет фильма по такому запросу! Введите название фильма.'
+//           );
+//           return;
+//         }
+//         setMovies(movies);
+//       } catch (error) {
+//         console.log(error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }
+//     fetchMoviesByQuery();
+//   }
+// }, [query]);
