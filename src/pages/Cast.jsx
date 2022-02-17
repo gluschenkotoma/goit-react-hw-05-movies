@@ -24,6 +24,9 @@ export const Cast = () => {
   return (
     <>
       <div>
+        <hr />
+        <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
+        <hr />
         <ul>
           {movieCasts.map(
             ({ id, profile_path, original_name, character, name }) => (
@@ -45,10 +48,6 @@ export const Cast = () => {
           )}
         </ul>
       </div>
-
-      <hr />
-      <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
-      <hr />
     </>
   );
 };

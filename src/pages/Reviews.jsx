@@ -21,6 +21,9 @@ export const Reviews = () => {
 
   return (
     <>
+      <hr />
+      <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
+      <hr />
       <div>
         {reviews.length !== 0 ? (
           <ul>
@@ -35,10 +38,6 @@ export const Reviews = () => {
           <p>We don't have any reviews yet</p>
         )}
       </div>
-
-      <hr />
-      <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
-      <hr />
     </>
   );
 };

@@ -29,6 +29,9 @@ export const MovieDetailsPage = () => {
 
   return (
     <div>
+      <hr />
+      <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
+      <hr />
       {loading && <Loader />}
       {movie && (
         <>
@@ -53,8 +56,6 @@ export const MovieDetailsPage = () => {
                 )}
               </div>
             </div>
-            <hr />
-            <NavLink to={location?.state?.from ?? '/'}>Go back</NavLink>
             <hr />
             <div>
               <h4>Additional Information</h4>
