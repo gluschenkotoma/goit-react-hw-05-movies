@@ -62,7 +62,7 @@ export const MovieDetailsPage = () => {
                 <li>
                   <NavLink
                     to={`/movies/${movie.id}/cast`}
-                    state={{ from: location }}
+                    state={{ from: location?.state?.from }}
                   >
                     CAST
                   </NavLink>
@@ -70,7 +70,7 @@ export const MovieDetailsPage = () => {
                 <li>
                   <NavLink
                     to={`/movies/${movie.id}/reviews`}
-                    state={{ from: location }}
+                    state={{ from: location?.state?.from }}
                   >
                     REVIEW
                   </NavLink>
